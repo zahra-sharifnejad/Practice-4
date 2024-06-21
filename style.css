@@ -1,0 +1,29 @@
+* {
+  font-family: cursive;
+}
+.users {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.user {
+  max-width: 400px;
+  padding: 1rem;
+  background-color: gainsboro;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.user:hover {
+  background-color: burlywood;
+  scale: 1.05;
+}
+.user img {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 200px;
+}
+.user p {
+  font-size: 1.2rem;
+}
