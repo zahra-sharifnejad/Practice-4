@@ -13,16 +13,16 @@
       let usersInfo = [];
       const container = document.querySelector('.users');
       async function getUsers() {
-        await fetch('https://randomuser.me/api/?results=4')
+        await fetch('https://reqres.in/api/users')
           .then(res => res.json())
           .then(users => {
-            usersInfo = users.results;
+            usersInfo = users.data;
             console.log(usersInfo);
-            usersInfo.forEach(user => {
+            usersInfo?.forEach(user => {
               const htmlUser = `
                <div class="user">
-                  <img src="${user.picture.large}" alt="user" />
-                  <h2>${user.name.first} ${user.name.last}</h2>
+                  <img src="${user.avatar}" alt="user" />
+                  <h2>${user.first_name} ${user.last_name}</h2>
                   <p>${user.email}</p>
                </div>
               `;
