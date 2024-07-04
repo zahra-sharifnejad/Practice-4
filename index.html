@@ -13,7 +13,7 @@
       let usersInfo = [];
       const container = document.querySelector('.users');
       async function getUsers() {
-        await fetch('https://api.example.com/users')
+        await fetch('https://reqres.in/api/users')
           
           .then(res => res.json())
           .then(users => {
