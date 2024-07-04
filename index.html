@@ -13,7 +13,8 @@
       let usersInfo = [];
       const container = document.querySelector('.users');
       async function getUsers() {
-        await fetch('https://reqres.in/api/users')
+        await fetch('https://api.example.com/users')
+          
           .then(res => res.json())
           .then(users => {
             usersInfo = users.data;
