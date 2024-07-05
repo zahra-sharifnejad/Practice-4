@@ -5,34 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
+    <style>
+      .product {
+        border: 1px solid #ccc;
+        padding: 16px;
+        margin: 16px;
+        text-align: center;
+      }
+      .product img {
+        max-width: 100px;
+      }
+    </style>
   </head>
   <body>
-    <h1>List Users</h1>
-    <div class="users"></div>
+    <h1>List Products</h1>
+    <div class="products"></div>
     <script>
-      let usersInfo = [];
-      const container = document.querySelector('.users');
-      async function getUsers() {
-        await fetch('https://reqres.in/api/users')
-          
+      let productsInfo = [];
+      const container = document.querySelector('.products');
+      async function getProducts() {
+        await fetch('https://fakestoreapi.com/products')
           .then(res => res.json())
-          .then(users => {
-            usersInfo = users.data;
-            console.log(usersInfo);
-            usersInfo?.forEach(user => {
-              const htmlUser = `
-               <div class="user">
-                  <img src="${user.avatar}" alt="user" />
-                  <h2>${user.first_name} ${user.last_name}</h2>
-                  <p>${user.email}</p>
+          .then(products => {
+            productsInfo = products;
+            console.log(productsInfo);
+            productsInfo.forEach(product => {
+              const htmlProduct = `
+               <div class="product">
+                  <img src="${product.image}" alt="product" />
+                  <h2>${product.title}</h2>
+                  <p>${product.description}</p>
+                  <p>Price: $${product.price}</p>
                </div>
               `;
-              container.insertAdjacentHTML('afterbegin', htmlUser);
+              container.insertAdjacentHTML('beforeend', htmlProduct);
             });
           })
           .catch(err => console.log(err.message));
       }
-      getUsers();
+      getProducts();
     </script>
   </body>
 </html>
